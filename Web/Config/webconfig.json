@@ -1,0 +1,24 @@
+{
+    "port": 8080,
+    "use_tls": false,
+    "tls_config": {
+        "cert_file_path": "Config/nebiros-web.cert",
+        "key_file_path": "Config/nebiros-web.key",
+        "pem_file_path": "Config/nebiros-web.pem"
+    },
+    "client_config_path": "Config/",
+    "oracle": {
+        "address": "oradbhostname",
+        "port": 1234,
+        "sid": "sid",
+        "username": "user",
+        "password": "pass"
+    },
+    "oauth": {
+        "client_id": "azure-client-id",
+	"client_secret": "client-secret",
+        "tenant": "azure-tenant-id",
+        "redirectUrl": "http://localhost:8080/auth/ms/callback",
+        "scopes": ["User.Read"]
+    }
+}

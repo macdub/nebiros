@@ -1,0 +1,61 @@
+{{define "htmlhead"}}{{end}}
+{{define "bodyopts"}}onload="IsEntitled();"{{end}}
+{{define "title"}}{{end}}
+{{define "header"}}{{end}}
+{{define "main"}}
+    <div onload="IsEntitled();"></div>
+    <div class="d-flex justify-content-between ms-3 me-3">
+        <h3>DRD User Management</h3>
+        <div class="dropdown">
+            <button class="btn btn-silver dropdown-toggle"
+                    type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">+</button>
+            <form class="needs-validation dropdown-menu p-3 min-vw-100" role="form" id="newuser" name="newuser" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="userEmail" class="form-label">User Email</label>
+                    <div class="input-group">
+                        <input class="form-control" type="email" id="userEmail" name="userEmail" placeholder="user email" required>
+                        <div class="invalid-feedback">Please enter a valid email address</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="userAction" class="form-label">User Action</label>
+                        <select name="userAction" id="userAction" class="form-select">
+                            <option value="add">Add / Update</option>
+                            <option valud="disable">Disable</option>
+                        </select>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="userEnabled" class="form-label">User Action</label>
+                        <select name="userEnabled" id="userEnabled" class="form-select">
+                            <option value="true">Enabled</option>
+                            <option valud="false">Disabled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-darkocean" onclick="Validate();">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="ms-3 me-3">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>User</th>
+                    <th>Enabled</th>
+                </tr>
+            </thead>
+            {{$length := len .EntMap.UserMap}} {{if ne $length 0}}
+            {{range $user, $enabled := .EntMap.UserMap}}
+            <tr>
+                <td>{{$user}}</td>
+                <td>{{$enabled}}</td>
+            </tr>
+            {{end}}
+            {{end}}
+        </table>
+    </div>
+{{end}}

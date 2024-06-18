@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Airflow Dev",
+    "resourceGroup": "azure-resource-group-name",
+    "clusterName": "aks-cluster-name"
+  }
+]

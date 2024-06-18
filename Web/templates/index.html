@@ -1,0 +1,69 @@
+{{define "htmlhead"}}{{end}}
+{{define "bodyopts"}}{{end}}
+{{define "title"}}{{end}}
+{{define "header"}}{{end}}
+{{define "main"}}
+    <div class="d-flex justify-content-between align-content-center" style="padding-left: 10px; padding-right: 15px">
+        <h3>AKS Cluster Status</h3>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="autorefreshSwitch" onclick="toggleAutoReload(this);">
+            <label class="form-check-label" for="autorefreshSwitch">AutoRefresh</label>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th>Resource Group</th>
+            <th>Cluster</th>
+            <th>Status</th>
+            <th>User</th>
+            <th>Timestamp</th>
+            <th style="padding-left: 20px">Action</th>
+        </tr>
+        </thead>
+    {{range .AksStatusTable}} <!-- loop over table rows -->
+        <tr>
+            <td>{{.ResourceGroup}}</td>
+            <td>{{.ClusterName}}</td>
+            <td>{{.Status}}</td>
+            <td>{{.User}}</td>
+            <td>{{.Timestamp}}</td>
+            <td>
+                <div class="d-flex justify-content-center">
+                {{if or (eq .Status "Running") (eq .Status "Stopped")}}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle"
+                                type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Menu
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                {{if eq .Status "Running"}}
+                                <button type="submit" class="dropdown-item" onclick="sendCommand({{.ClusterName}}, 'aks-stop');">
+                                    🛑 Stop
+                                </button>
+                                {{else if eq .Status "Stopped"}}
+                                <button type="submit" class="dropdown-item" onclick="sendCommand({{.ClusterName}}, 'aks-start');">
+                                    ▶️ Start
+                                </button>
+                                {{end}}
+                            </li>
+                        </ul>
+                    </div>
+                {{else}}
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                {{end}}
+                </div>
+            </td>
+        </tr>
+    {{end}}
+    </table>
+    {{with $cmderr := .GetField "CmdError"}}
+    <div class="alert alert-danger">
+        {{$cmderr}}
+    </div>
+    {{end}}
+{{end}}

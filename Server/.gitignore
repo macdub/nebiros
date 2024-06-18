@@ -1,0 +1,4 @@
+Config/*.pem
+Config/*.pfx
+
+NebirosServer

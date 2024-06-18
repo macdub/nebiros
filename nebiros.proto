@@ -1,0 +1,42 @@
+syntax = "proto3";
+option go_package = "./nebiros"; // tbd
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+package nebiros;
+
+// protoc -I ./ --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative nebiros.proto
+
+service Nebiros {
+  rpc ExecCommand(Command) returns (CommandResponse) {}
+
+  rpc GetRemoteCommands(GetRemoteCommandOpts) returns (RemoteCommandUsageResults) {}
+
+  rpc CommandListener(stream Command) returns (CommandResponse) {}
+}
+
+// A command to execute server side
+message Command {
+  string UserID = 1;
+  string CmdName = 2;
+  repeated string CmdOpts = 3;
+}
+
+// Provide on-going status for a given command
+message CommandResponse {
+  string CmdResult = 1;
+  string CmdError = 2;
+  google.protobuf.Duration ExecTime = 3;
+  google.protobuf.Timestamp StartTime = 4;
+  google.protobuf.Timestamp EndTime = 5;
+}
+
+// Empty parameter for future use-cases
+message GetRemoteCommandOpts {}
+
+// Remote command usages
+message RemoteCommandUsageResults {
+  repeated string RemoteCommandUsage = 1;
+}
+

@@ -1,0 +1,17 @@
+{
+  "oracle": {
+    "address": "hostname",
+    "port": "port",
+    "sid": "sid",
+    "username": "user",
+    "password": "pass"
+  },
+  "tls": {
+    "use_tls": false,
+    "cert_file": "",
+    "key_file": ""
+  },
+  "hostname": "",
+  "port": 50051,
+  "watcher_sleep_seconds": 10
+}

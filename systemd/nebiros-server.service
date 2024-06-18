@@ -1,0 +1,8 @@
+[Unit]
+Description = Nebiros Web Server
+
+[Service]
+ExecStart=/opt/app/Nebiros/web/NebirosServer
+
+[Install]
+WantedBy=multi.user.target

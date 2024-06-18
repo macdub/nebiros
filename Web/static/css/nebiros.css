@@ -1,0 +1,116 @@
+:root {
+    /* Primary Tints */
+    --daintree:     #011b2b;
+    --smokeyblue:   #0626a9;
+
+    /* Optional Tints */
+    --mercury:      #dce3ec;
+    --coolmarble:   #c7d2ec;
+    --eveningblue:  #7692dd;
+    --skyblue:      #5987da;
+    --darkocean:    #00293b;
+
+    /* Greyscale */
+    --white:        #ffffff;
+    --silver:       #d5d7d5;
+    --soapstone:    #c6c8c8;
+    --flint:        #73787c;
+
+    /* Secondary Tints */
+    --marigold:     #ffc62d;
+    --tangerine:    #f08900;
+    --carnation:    #e44261;
+    --turquoise:    #00c4b3;
+    --moodyblue:    #6c7bd3;
+    --jade:         #00945e;
+
+    --fontfam: Roboto, Merriweather, Arial;
+}
+
+h1 {
+    color: var(--darkocean);
+    font-family: var(--fontfam);
+    font-size: 250%
+}
+
+h2, h3 {
+    color: var(--smokeyblue);
+    font-family: var(--fontfam);
+    font-size: lighter;
+}
+
+* {
+    font-family: var(--fontfam);
+}
+
+span {
+    display: inline-block;
+    width: 75px
+}
+
+body {
+    background-color: var(--daintree);
+}
+
+.center {
+    margin: auto;
+    width: 75%;
+    padding: 10px;
+}
+
+.dt-form {
+    padding: 10px;
+    background-color: var(--soapstone);
+}
+
+.support {
+    margin: 2em 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+}
+
+.support li {
+    position: relative;
+    cursor: pointer;
+    display: inline;
+}
+
+.support li:hover {
+    left: .1em;
+}
+
+.support a {
+    color: #333;
+    text-decoration: none;
+    background-color: #ccc;
+    margin: .5em;
+    height: 1.6em;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+}
+
+.support a:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+}
+
+.support a:active {
+    background-color: #525252;
+    color: #fafafa;
+}
+
+.support .badge {
+    color: white;
+    padding: 0.5em 0.7em 0 0.7em;
+    background-color: #405061;
+    line-height: 1em;
+    position: relative;
+    top: -2px;
+    height: 100%;
+    min-width: 16px;
+    text-align: right;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+}
